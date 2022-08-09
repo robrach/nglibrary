@@ -26,13 +26,18 @@ def find_author(request):
 
 
 
+
+
 def books_by_author(request):
     author_key = ""
+    author_info = {}
     if 'author' in request.GET:
         author_key = get_author_key(request)
-        print('hej' + author_key)
-    return render(request, 'searcher/home.html', {'author_key': author_key})
-
+        author_info = get_author_info(author_key)
+    return render(request, 'searcher/home.html', {
+        'author_key': author_key,
+        'author_info': author_info,
+    })
 
 
 def get_author_key(request):
@@ -41,7 +46,6 @@ def get_author_key(request):
     url = f'https://openlibrary.org/search/authors.json?q="{author}"'
     response = requests.get(url)
     author_key = response.json()['docs'][0]['key']
-    print(author_key)
     return author_key
 
 
