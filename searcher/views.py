@@ -1,7 +1,12 @@
 from django.shortcuts import render
+import requests
 
-from django.http import HttpResponse
 
-
-def index(request):
-    return HttpResponse("Hey, ho, let's go!")
+def search(request):
+    author = {}
+    if 'author_id' in request.GET:
+        author_id = request.GET['author_id']
+        url = f'https://openlibrary.org/authors/{author_id}.json'
+        response = requests.get(url)
+        author = response.json()
+    return render(request, 'searcher/home.html', {'author': author})
