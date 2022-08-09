@@ -7,11 +7,12 @@
 <body>
 <h2>Search for the author's books</h2>
 <form method="get">
-    <input type="text" name="author_id">
+    <input type="text" name="author">
     <button type="submit">Search</button>
 </form>
-{% if author %}
-{{ author.created.value }}
+{% if author_key %}
+{{ author_key }}<br>
+<!--{{ author_info }}-->
 {% endif %}
 </body>
 </html>
