@@ -7,14 +7,24 @@
 <body>
 <h2>Search for the author's books</h2>
 <form method="get">
-    <input type="text" name="author">
+    <label for="author">Author:</label>
+    <input type="text" name="author" id="author">
     <button type="submit">Search</button>
 </form>
 {% if author_key %}
-    {{ author_key }}<br>
-    {{ author_work_count }}<br>
-    {{ author_info }}<br>
-    {{ author_books }}
+    <br><b>Personal name:</b> {{ author_info.personal_name }}
+    <br><b>Alternate names:</b> {{ author_info.alternate_names }}
+    <br><b>Date of birth:</b> {{ author_info.birth_date }}
+    {% if author_info.death_date %}
+        <br><b>Date of death:</b> {{ author_info.death_date }}
+    {% endif %}
+    <br>
+    <br>{{ author_work_count }} works as follows:
+
+    {% for book in author_books %}
+        <br>{{ forloop.counter }}
+        {{ author_books.0.title }}
+    {% endfor %}
 {% endif %}
 </body>
 </html>

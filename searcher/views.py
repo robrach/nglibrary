@@ -68,5 +68,5 @@ def get_author_info(author_key):
 def get_author_books(author_key, author_work_count):
     url = f'https://openlibrary.org/authors/{author_key}/works.json?limit={author_work_count}'
     response = requests.get(url)
-    author_books = response.json()
+    author_books = response.json()['entries']
     return author_books
