@@ -3,6 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Searcher</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        tr:nth-child(2n+1) {
+            background: #ccc;
+        }
+    </style>
 </head>
 <body>
 <h2>Search for the author's books</h2>
@@ -28,11 +37,18 @@
     {% endif %}
     <br>
     <br><b>{{ author_work_count }} works as follows:</b>
-
-    {% for book in author_books %}
-        <br>{{ forloop.counter }}
-        {{ author_books.0.title }}
-    {% endfor %}
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Openlibrary URL</th>
+        </tr>
+        {% for key, value in books.items %}
+        <tr>
+            <td>{{ key }}</td>
+            <td><a href="{{ value }}">{{ value }}</a></td>
+        </tr>
+        {% endfor %}
+    </table>
 {% endif %}
 {% if searching_result == 0 %}
     <div id="searching_result_info">
