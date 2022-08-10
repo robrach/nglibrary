@@ -1,5 +1,6 @@
 from django.shortcuts import render
 import requests
+from .models import Author
 
 
 def books_by_author(request):
@@ -15,6 +16,7 @@ def books_by_author(request):
             author_work_count = content[1]
             author_info = get_author_info(author_key)
             books = get_author_books(author_key, author_work_count)
+            count_view_for_the_author(author_key)
         else:
             searching_result = 0
     return render(request, 'searcher/home.html', {
@@ -57,3 +59,11 @@ def get_author_books(author_key, author_work_count):
         openlibrary_url = f"https://openlibrary.org{book['key']}"
         books[title] = openlibrary_url
     return books
+
+
+def count_view_for_the_author(author_key):
+    """
+    In this function:
+    Validate data and write into database into model "Author".
+    """
+    pass
