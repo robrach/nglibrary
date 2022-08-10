@@ -133,3 +133,4 @@ dmypy.json
 
 # Temporary files
 TODO.txt
+searcher/migrations
