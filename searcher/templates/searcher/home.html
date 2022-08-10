@@ -13,6 +13,7 @@
         }
     </style>
 </head>
+
 <body>
 <h2>Search for the author's books</h2>
 <div id="search_area" style="display: flex">
@@ -37,6 +38,9 @@
     {% endif %}
     <br>
     <br><b>{{ author_work_count }} works as follows:</b>
+    <button id="download-button" style="color: blue">Download CSV file with below results</button>
+    <br>
+    <br>
     <table>
         <tr>
             <th>Title</th>
@@ -56,6 +60,7 @@
     </div>
 {% endif %}
 </div>
+
 <script>
     const textarea = document.getElementById('author');
     const clear = document.getElementById('btn_clear');
@@ -70,13 +75,58 @@
     });
 
     search.addEventListener('click', function search() {
-        if(textarea.value.length != 0 )
-        {
+        if(textarea.value.length != 0 ) {
             info.style.display = 'block';
             results.style.display = 'none';
             previous_info.style.display = 'none';
         }
     });
+</script>
+
+<script>
+function htmlToCSV(html, filename) {
+    var data = [];
+	var rows = document.querySelectorAll("table tr");
+
+	for (var i = 0; i < rows.length; i++) {
+		var row = [], cols = rows[i].querySelectorAll("td, th");
+
+		for (var j = 0; j < cols.length; j++) {
+		        row.push(cols[j].innerText);
+        }
+
+		data.push(row.join(","));
+	}
+
+	downloadCSVFile(data.join("\n"), filename);
+}
+</script>
+
+<script>
+function downloadCSVFile(csv, filename) {
+	var csv_file, download_link;
+
+	csv_file = new Blob([csv], {type: "text/csv"});
+
+	download_link = document.createElement("a");
+
+	download_link.download = filename;
+
+	download_link.href = window.URL.createObjectURL(csv_file);
+
+	download_link.style.display = "none";
+
+	document.body.appendChild(download_link);
+
+	download_link.click();
+}
+</script>
+
+ <script>
+document.getElementById("download-button").addEventListener("click", function () {
+	var html = document.querySelector("table").outerHTML;
+	htmlToCSV(html, "books_{{ author_info.personal_name }}.csv");
+});
 </script>
 </body>
 </html>
