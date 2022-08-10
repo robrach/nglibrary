@@ -9,7 +9,7 @@
 <div id="search_area" style="display: flex">
     <form method="get">
         <label for="author">Author:</label>
-        <input type="text" name="author" id="author" required="required" placeholder="Name and Surname">
+        <input type="text" name="author" id="author" required="required" placeholder="Name Surname">
         <button type="submit" id="btn_search">Search</button>
     </form>
     <button id="btn_clear">Clear</button>
@@ -33,6 +33,13 @@
         {{ author_books.0.title }}
     {% endfor %}
 {% endif %}
+{% if searching_result == 0 %}
+    <div id="searching_result_info">
+        <p style="color: red">Can't find the author. Please try again.</p>
+    </div>
+{% endif %}
+
+
 </div>
 <script>
     const textarea = document.getElementById('author');
