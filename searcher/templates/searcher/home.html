@@ -14,6 +14,7 @@
     </form>
     <button id="btn_clear">Clear</button>
 </div>
+<p id="info" style="display: none; color: blue">Searching... Please wait.</p>
 <div id="results">
 {% if author_key %}
     <br><b>Personal name:</b> {{ author_info.personal_name }}
@@ -38,16 +39,27 @@
         <p style="color: red">Can't find the author. Please try again.</p>
     </div>
 {% endif %}
-
-
 </div>
 <script>
     const textarea = document.getElementById('author');
     const clear = document.getElementById('btn_clear');
     const results = document.getElementById('results');
+    const info = document.getElementById('info');
+    const search = document.getElementById('btn_search');
+    const previous_info = document.getElementById('searching_result_info')
+
     clear.addEventListener('click', function clear() {
         textarea.value = '';
         results.style.display = 'none';
+    });
+
+    search.addEventListener('click', function search() {
+        if(textarea.value.length != 0 )
+        {
+            info.style.display = 'block';
+            results.style.display = 'none';
+            previous_info.style.display = 'none';
+        }
     });
 </script>
 </body>
