@@ -6,11 +6,15 @@
 </head>
 <body>
 <h2>Search for the author's books</h2>
-<form method="get">
-    <label for="author">Author:</label>
-    <input type="text" name="author" id="author">
-    <button type="submit">Search</button>
-</form>
+<div id="search_area" style="display: flex">
+    <form method="get">
+        <label for="author">Author:</label>
+        <input type="text" name="author" id="author">
+        <button type="submit" id="btn_search">Search</button>
+    </form>
+    <button id="btn_clear">Clear</button>
+</div>
+<div id="results">
 {% if author_key %}
     <br><b>Personal name:</b> {{ author_info.personal_name }}
     <br><b>Alternate names:</b> {{ author_info.alternate_names }}
@@ -18,13 +22,26 @@
     {% if author_info.death_date %}
         <br><b>Date of death:</b> {{ author_info.death_date }}
     {% endif %}
+    {% if author_info.bio %}
+        <br><b>About the author:</b> {{ author_info.bio }}
+    {% endif %}
     <br>
-    <br>{{ author_work_count }} works as follows:
+    <br><b>{{ author_work_count }} works as follows:</b>
 
     {% for book in author_books %}
         <br>{{ forloop.counter }}
         {{ author_books.0.title }}
     {% endfor %}
 {% endif %}
+</div>
+<script>
+    const textarea = document.getElementById('author');
+    const clear = document.getElementById('btn_clear');
+    const results = document.getElementById('results');
+    clear.addEventListener('click', function clear() {
+        textarea.value = '';
+        results.style.display = 'none';
+    });
+</script>
 </body>
 </html>
