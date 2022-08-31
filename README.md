@@ -1,7 +1,7 @@
 # nglibrary
 Application using API of Open Library.
 
-Currently, a user can search for an author's published books. The results are obtained through the API. The results can be exported to a CSV file.
+Currently, user can search for an author's published books. Results are obtained through API of the Open Library. Results can be exported to a CSV file.
 
 Example screenshot:
 
