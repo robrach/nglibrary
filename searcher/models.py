@@ -7,3 +7,5 @@ class Author(models.Model):
     alternate_names = models.TextField(default='')
     view_count = models.IntegerField(default=1)
 
+    def __str__(self):
+        return f'{self.personal_name}, {self.view_count}'
