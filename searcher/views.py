@@ -1,5 +1,6 @@
 from django.shortcuts import render
 import requests
+from rest_framework.utils import json
 from .models import Author
 
 
@@ -65,8 +66,19 @@ def count_view_for_the_author(author_key, author_info):
     try:
         author = Author.objects.get(author_key=author_key)
     except (KeyError, Author.DoesNotExist):
-        author = Author(author_key=author_key, personal_name=author_info['personal_name'], view_count=1)
+        try:
+            alternate_names = author_info['alternate_names']
+        except KeyError:
+            alternate_names = ''
+
+        author = Author(
+            author_key=author_key,
+            personal_name=author_info['personal_name'],
+            alternate_names=alternate_names,
+            view_count=1,
+        )
         author.save()
     else:
         author.view_count += 1
         author.save()
+        
