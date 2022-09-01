@@ -81,4 +81,3 @@ def count_view_for_the_author(author_key, author_info):
     else:
         author.view_count += 1
         author.save()
-        
