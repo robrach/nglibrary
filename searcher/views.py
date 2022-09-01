@@ -1,5 +1,6 @@
 from django.shortcuts import render
 import requests
+from rest_framework.utils import json
 from .models import Author
 
 
@@ -16,7 +17,7 @@ def books_by_author(request):
             author_work_count = content[1]
             author_info = get_author_info(author_key)
             books = get_author_books(author_key, author_work_count)
-            count_view_for_the_author(author_key)
+            count_view_for_the_author(author_key, author_info)
         else:
             searching_result = 0
     return render(request, 'searcher/home.html', {
@@ -61,9 +62,22 @@ def get_author_books(author_key, author_work_count):
     return books
 
 
-def count_view_for_the_author(author_key):
-    """
-    In this function:
-    Validate data and write into database into model "Author".
-    """
-    pass
+def count_view_for_the_author(author_key, author_info):
+    try:
+        author = Author.objects.get(author_key=author_key)
+    except (KeyError, Author.DoesNotExist):
+        try:
+            alternate_names = author_info['alternate_names']
+        except KeyError:
+            alternate_names = ''
+
+        author = Author(
+            author_key=author_key,
+            personal_name=author_info['personal_name'],
+            alternate_names=alternate_names,
+            view_count=1,
+        )
+        author.save()
+    else:
+        author.view_count += 1
+        author.save()
