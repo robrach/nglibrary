@@ -13,6 +13,7 @@ from .models import Author
 class AuthorAdmin(admin.ModelAdmin):
 
     list_display = ['view_count', 'personal_name', 'alternate_names']
+    list_display_links = ['personal_name']
     ordering = ['-view_count']
     list_filter = ['view_count']
     search_fields = ['personal_name', 'alternate_names']
