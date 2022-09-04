@@ -90,7 +90,7 @@ class AuthorsViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows to get all viewed authors.
     """
-    queryset = Author.objects.all()
+    queryset = Author.objects.all().order_by('-view_count')
     serializer_class = AuthorSerializer
     http_method_names = ['get']
 
