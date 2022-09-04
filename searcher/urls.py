@@ -11,4 +11,5 @@ app_name = 'searcher'
 urlpatterns = [
     path('', views.books_by_author, name='home'),
     path('api/', include(router.urls)),
+    path('api/author/<str:name>/', views.author_detail),
 ]
