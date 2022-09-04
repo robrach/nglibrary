@@ -1,7 +1,10 @@
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 import requests
-from rest_framework.utils import json
+
 from .models import Author
+from rest_framework import viewsets
+from searcher.serializers import AuthorSerializer
 
 
 def books_by_author(request):
@@ -81,3 +84,26 @@ def count_view_for_the_author(author_key, author_info):
     else:
         author.view_count += 1
         author.save()
+
+
+class AuthorsViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows to get all viewed authors.
+    """
+    queryset = Author.objects.all().order_by('-view_count')
+    serializer_class = AuthorSerializer
+    http_method_names = ['get']
+
+
+def author_detail(request, name):
+    """
+    API endpoint to retrieve an author details by personal_name
+    """
+    try:
+        author = Author.objects.get(personal_name=name)
+    except Author.DoesNotExist:
+        return HttpResponse(status=404)
+
+    if request.method == 'GET':
+        serializer = AuthorSerializer(author)
+        return JsonResponse(serializer.data)
