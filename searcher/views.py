@@ -84,9 +84,10 @@ def count_view_for_the_author(author_key, author_info):
         author.save()
 
 
-class AuthorViewSet(viewsets.ModelViewSet):
+class AuthorsViewSet(viewsets.ModelViewSet):
     """
-    API endpoint that allows to get authors.
+    API endpoint that allows to get viewed authors.
     """
     queryset = Author.objects.all()
     serializer_class = AuthorSerializer
+    http_method_names = ['get']
