@@ -1,7 +1,8 @@
 from django.shortcuts import render
 import requests
-from rest_framework.utils import json
 from .models import Author
+from rest_framework import viewsets
+from searcher.serializers import AuthorSerializer
 
 
 def books_by_author(request):
@@ -81,3 +82,12 @@ def count_view_for_the_author(author_key, author_info):
     else:
         author.view_count += 1
         author.save()
+
+
+class AuthorViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows to get authors.
+    """
+    queryset = Author.objects.all()
+    serializer_class = AuthorSerializer
+    
