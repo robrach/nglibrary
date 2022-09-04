@@ -5,7 +5,7 @@ Features:
 - user can search for the author's published books,
 - results are obtained through API of the Open Library,
 - results can be exported to a CSV file,
-- statistics about searched authors are collected in SQL database,
+- statistics about viewed  authors are collected in SQL database,
 - statistics can be read via Admin Panel.
 
 Future features (work in progress):
