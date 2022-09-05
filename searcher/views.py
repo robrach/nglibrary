@@ -111,3 +111,7 @@ def author_detail(request, name):
 
 def api_info(request):
     return render(request, 'searcher/API.html')
+
+
+def about(request):
+    return render(request, 'searcher/about.html')

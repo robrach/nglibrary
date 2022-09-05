@@ -1,5 +1,5 @@
 from django.urls import path, include
-
+from django.contrib import admin
 from . import views
 from rest_framework import routers
 
@@ -13,4 +13,5 @@ urlpatterns = [
     path('api/', views.api_info, name='API'),
     path('', include(router.urls)),
     path('api/author/<str:name>/', views.author_detail),
+    path('about/', views.about, name='about'),
 ]
