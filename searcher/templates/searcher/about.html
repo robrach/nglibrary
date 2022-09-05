@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About</title>
+</head>
+<body>
+{% include "searcher/links.html" %}
+<p>'NGlibrary' is the web application in Django using API of
+    <a href="https://openlibrary.org/" target="_blank">Open Library</a>.
+    It also also has its own API for getting statistics about searches.
+</p>
+Features of NGlibrary:
+<ul>
+    <li>user can search for the author's published books,</li>
+    <li>results are collected through API of the Open Library,</li>
+    <li>results can be exported to a CSV file,</li>
+    <li>statistics about viewed authors in this app are collected in SQL database,</li>
+    <li>statistics can be read via Admin Panel,</li>
+    <li>statistics are also available via API.</li>
+</ul>
+</body>
+</html>

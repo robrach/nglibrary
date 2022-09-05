@@ -107,3 +107,11 @@ def author_detail(request, name):
     if request.method == 'GET':
         serializer = AuthorSerializer(author)
         return JsonResponse(serializer.data)
+
+
+def api_info(request):
+    return render(request, 'searcher/API.html')
+
+
+def about(request):
+    return render(request, 'searcher/about.html')

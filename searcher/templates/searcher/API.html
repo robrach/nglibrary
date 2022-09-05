@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>API</title>
+</head>
+<body>
+{% include "searcher/links.html" %}
+<p>This app has its own API for getting statistics about searches. Main API endpoints are:</p>
+<ul>
+    <li>all authors, sorted by the most searched:
+        <br>http://127.0.0.1:8000/api/authors/
+    </li>
+    <br>
+    <li>first x most searched authors:
+        <br>http://127.0.0.1:8000/api/authors/?limit=x/
+        <br><i>for example http://127.0.0.1:8000/api/authors/?limit=3/</i>
+    </li>
+    <br>
+    <li>specific author by name and surname:
+        <br>http://127.0.0.1:8000/api/author/Name%20Surname/
+        <br><i>for example http://127.0.0.1:8000/api/author/Paulo%20Coelho/</i>
+    </li>
+</ul>
+</body>
+</html>
