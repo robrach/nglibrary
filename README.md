@@ -25,14 +25,14 @@ __Example screenshots:__
 
 ![image](https://user-images.githubusercontent.com/76916353/188738546-ba1e3e4a-ff18-4264-aac7-c98c2a2ce9a6.png)
 
-* API results using Postman for http://127.0.0.1:8000/api/authors/
+* API results using Postman for /127.0.0.1:8000/api/authors/
 
 ![image](https://user-images.githubusercontent.com/76916353/188307388-f1c865c8-3325-4a45-b5f0-46b46a65aab7.png)
 
-* API results using Postman for http://127.0.0.1:8000/api/authors/?limit=3/
+* API results using Postman for /127.0.0.1:8000/api/authors/?limit=3
 
 ![image](https://user-images.githubusercontent.com/76916353/188307729-a7180e8d-4856-437d-bb2f-9e28d730c945.png)
 
-* API results using Postman for http://127.0.0.1:8000/api/author/Paulo%20Coelho/
+* API results using Postman for /127.0.0.1:8000/api/author/Paulo%20Coelho/
 
 ![image](https://user-images.githubusercontent.com/76916353/188307652-3817d5f5-7b7c-4ba5-b346-79eeaee7da20.png)
