@@ -1,6 +1,8 @@
 # nglibrary
 Web application in Django using API of Open Library. This app also has its own API.
 
+The app is deployed at https://nglib.herokuapp.com
+
 __Features:__
 - user can search for the author's published books,
 - results are collected through API of the Open Library,
@@ -8,9 +10,9 @@ __Features:__
 - statistics about viewed authors in this app are collected in SQL database,
 - statistics can be read via Admin Panel,
 - statistics are also available via API:
-  - all authors: http://127.0.0.1:8000/api/authors/
-  - first x authors: http://127.0.0.1:8000/api/authors/?limit=x/
-  - specific author by name and surname: http://127.0.0.1:8000/api/author/Name%20Surname/
+  - all authors: .../api/authors/
+  - first x authors: .../api/authors/?limit=x/
+  - specific author by name and surname: .../api/author/Name%20Surname/
 
 \
 __Example screenshots:__
