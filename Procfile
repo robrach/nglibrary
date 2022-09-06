@@ -1,0 +1,1 @@
+web: gunicorn nglibrary.wsgi:application --log-file -
