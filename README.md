@@ -1,5 +1,5 @@
 # nglibrary
-Web application in Django using API of Open Library.
+Web application in Django using API of Open Library. This app also has its own API.
 
 __Features:__
 - user can search for the author's published books,
