@@ -23,7 +23,7 @@ __Example screenshots:__
 
 * Admin Panel:
 
-![image](https://user-images.githubusercontent.com/76916353/188305933-b7129a78-11be-4de8-82b3-23c4a8aabd6c.png)
+![image](https://user-images.githubusercontent.com/76916353/188738546-ba1e3e4a-ff18-4264-aac7-c98c2a2ce9a6.png)
 
 * API results using Postman for http://127.0.0.1:8000/api/authors/
 
